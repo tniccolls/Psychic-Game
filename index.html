@@ -12,12 +12,13 @@
 <body>
     <h1>The Pyschic Game</h1>
     <div>Guess what letter I'm thinking of!</div>
+    <div>Important... Play with CapsLock on for now, the game is still in development and does not yet take lowercase letters.</div>
     <br>
-    <div>Wins: </div>
+    <div>Wins: <span id="winCount"></span></div>
     <br>
-    <div>Losses: </div>
+    <div>Losses: <span id="lossCount"></span></div>
     <br>
-    <div>Guesses Left: </div>
+    <div>Guesses Left: <span id="guessCount"></span></div>
     <br>
     <div id = inputs>
         <h2>Your Guesses so far: <span id="userGuesses"></span></h2>
@@ -28,18 +29,38 @@
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var wins = 0;
     var losses = 0;
+    var guessesLeft = 9;
     var userKey = "C";
     var randomChoice = (Math.floor(Math.random()*26));
     var answer = letters[randomChoice];
         console.log(answer); //making sure my random letter generator worked
 
     var userText = document.getElementById("userGuesses");
+    var newWins = document.getElementById("winCount");
+    var newLosses = document.getElementById("lossCount");
+    var newGuessesLeft = document.getElementById("guessCount");
+    newWins.textContent = wins;
+    newLosses.textContent = losses;
+    newGuessesLeft.textContent = guessesLeft;
+    
     document.onkeyup = function(event) {
         userText.textContent = event.key;
-        var a = [];
-        var b = event.key;
-        a.push(b)
-        console.log(a);
+        userKey = event.key;
+        if(userKey==answer) {
+            wins = wins+1;
+            newWins.textContent = wins;
+            $(".userGuesses").empty();
+            newAnswer = (Math.floor(Math.random()*26));
+            answer = letters[newAnswer];
+            console.log(answer); //makeing sure the new letter resets
+        } else if(userKey != answer) {
+            if(userGuesses.length < 9) {
+            $(".userGuesses").append(userKey);
+            } else if(userGuesses.length == 9) {
+                losses = losses++;
+                $(".userGuesses").empty();
+            } //problematic because userGuesses is not a variable, but an id. See how to check the length of an id?
+        }  
     }
 
 
