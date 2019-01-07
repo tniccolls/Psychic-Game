@@ -12,7 +12,6 @@
 <body>
     <h1>The Pyschic Game</h1>
     <div>Guess what letter I'm thinking of!</div>
-    <div>Important... Play with CapsLock on for now, the game is still in development and does not yet take lowercase letters.</div>
     <br>
     <div>Wins: <span id="winCount"></span></div>
     <br>
@@ -20,58 +19,11 @@
     <br>
     <div>Guesses Left: <span id="guessCount"></span></div>
     <br>
-    <div id = inputs>
-        <h2>Your Guesses so far: <span id="userGuesses"></span></h2>
+    <div>Your Guesses so far: <span id="userGuesses"></span>
 
     </div>
 
-    <script type="text/javascript">;
-    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    var wins = 0;
-    var losses = 0;
-    var guessesLeft = 9;
-    var userKey = "C";
-    var randomChoice = (Math.floor(Math.random()*26));
-    var answer = letters[randomChoice];
-        console.log(answer); //making sure my random letter generator worked
+    <script type="text/javascript" src = "assets/javascript/game.js"></script>
 
-    var userText = document.getElementById("userGuesses");
-    var newWins = document.getElementById("winCount");
-    var newLosses = document.getElementById("lossCount");
-    var newGuessesLeft = document.getElementById("guessCount");
-    newWins.textContent = wins;
-    newLosses.textContent = losses;
-    newGuessesLeft.textContent = guessesLeft;
-    
-    document.onkeyup = function(event) {
-        // userText.textContent = event.key;
-        userKey = event.key;
-        if(userKey==answer) {
-            wins = wins+1;
-            newWins.textContent = wins;
-            guessesLeft = 9;
-            newGuessesLeft.textContent = guessesLeft;
-            userText.textContent = "";
-            $(".userGuesses").empty();
-            newAnswer = (Math.floor(Math.random()*26));
-            answer = letters[newAnswer];
-            console.log(answer); //makeing sure the new letter resets
-        } else if(userKey != answer) {
-            userText.textContent = event.key;
-            guessesLeft = guessesLeft - 1;
-            newGuessesLeft.textContent = guessesLeft;
-            if(guessesLeft < 1) {
-                losses = losses+1;
-                newLosses.textContent = losses;
-                guessesLeft = 9;
-                newGuessesLeft.textContent = guessesLeft;
-
-            }  
-        }  
-    }
-
-
-
-    </script>
 </body>
 </html>
