@@ -44,41 +44,34 @@
     newGuessesLeft.textContent = guessesLeft;
     
     document.onkeyup = function(event) {
-        userText.textContent = event.key;
+        // userText.textContent = event.key;
         userKey = event.key;
         if(userKey==answer) {
             wins = wins+1;
             newWins.textContent = wins;
+            guessesLeft = 9;
+            newGuessesLeft.textContent = guessesLeft;
+            userText.textContent = "";
             $(".userGuesses").empty();
             newAnswer = (Math.floor(Math.random()*26));
             answer = letters[newAnswer];
             console.log(answer); //makeing sure the new letter resets
         } else if(userKey != answer) {
-            if(userGuesses.length < 9) {
-            $(".userGuesses").append(userKey);
-            } else if(userGuesses.length == 9) {
-                losses = losses++;
-                $(".userGuesses").empty();
-            } //problematic because userGuesses is not a variable, but an id. See how to check the length of an id?
+            userText.textContent = event.key;
+            guessesLeft = guessesLeft - 1;
+            newGuessesLeft.textContent = guessesLeft;
+            if(guessesLeft < 1) {
+                losses = losses+1;
+                newLosses.textContent = losses;
+                guessesLeft = 9;
+                newGuessesLeft.textContent = guessesLeft;
+
+            }  
         }  
     }
 
 
 
-    // $(".userGuesses").on("keyup", function() {
-    //      //userKey = ? look up how to set this
-    //     if(userKey==answer) {
-    //         wins = wins+1;
-    //         $(".userGuesses").empty();
-    //     } else if(userKey != answer) {
-    //         if(userGuesses.length < 9) {
-    //         $(".userGuesses").append(userKey);
-    //         } else if(userGuesses.length == 9) {
-    //             losses = losses++;
-    //             $(".userGuesses").empty();
-    //         } //problematic because userGuesses is not a variable, but an id. See how to check the length of an id?
-    //     }  
-    // });
     </script>
 </body>
 </html>
