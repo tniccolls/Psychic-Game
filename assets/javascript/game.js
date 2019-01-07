@@ -1,4 +1,4 @@
-   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var wins = 0;
     var losses = 0;
     var guessesLeft = 9;
@@ -29,7 +29,7 @@
             answer = letters[newAnswer];
             console.log(answer); //making sure the new letter resets. Allows the player to cheat easily, however...
             console.log("Don't Cheat!"); 
-        } else if(userKey != answer) {
+        } else if(userKey != answer && letters.indexOf(userKey) != -1) {
             userText.insertAdjacentText('beforeend', userKey + ", ");
             guessesLeft = guessesLeft - 1;
             newGuessesLeft.textContent = guessesLeft;
