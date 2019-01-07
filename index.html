@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>The Pyschic Game</h1>
+    <div>Guess what letter I'm thinking of!</div>
+    <br>
+    <div>Wins: </div>
+    <br>
+    <div>Losses: </div>
+    <br>
+    <div>Guesses Left: </div>
+    <br>
+    <div id = inputs>
+        <h2>Your Guesses so far: <span id="userGuesses"></span></h2>
+
+    </div>
+
+    <script type="text/javascript">;
+    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var wins = 0;
+    var losses = 0;
+    var userKey = "C";
+    var randomChoice = (Math.floor(Math.random()*26));
+    var answer = letters[randomChoice];
+        console.log(answer); //making sure my random letter generator worked
+
+    var userText = document.getElementById("userGuesses");
+    document.onkeyup = function(event) {
+        userText.textContent = event.key;
+        var a = [];
+        var b = event.key;
+        a.push(b)
+        console.log(a);
+    }
+
+
+
+    // $(".userGuesses").on("keyup", function() {
+    //      //userKey = ? look up how to set this
+    //     if(userKey==answer) {
+    //         wins = wins+1;
+    //         $(".userGuesses").empty();
+    //     } else if(userKey != answer) {
+    //         if(userGuesses.length < 9) {
+    //         $(".userGuesses").append(userKey);
+    //         } else if(userGuesses.length == 9) {
+    //             losses = losses++;
+    //             $(".userGuesses").empty();
+    //         } //problematic because userGuesses is not a variable, but an id. See how to check the length of an id?
+    //     }  
+    // });
+    </script>
+</body>
+</html>
